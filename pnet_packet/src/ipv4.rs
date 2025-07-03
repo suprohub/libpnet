@@ -258,17 +258,17 @@ fn ipv4_payload_length_test() {
 /// Represents the IPv4 Option field.
 #[packet]
 pub struct Ipv4Option {
-    copied: u1,
-    class: u2,
+    pub copied: u1,
+    pub class: u2,
     #[construct_with(u5)]
-    number: Ipv4OptionNumber,
+    pub number: Ipv4OptionNumber,
     #[length_fn = "ipv4_option_length"]
     // The length field is an optional field, using a Vec is a way to implement
     // it
-    length: Vec<u8>,
+    pub length: Vec<u8>,
     #[length_fn = "ipv4_option_payload_length"]
     #[payload]
-    data: Vec<u8>,
+    pub data: Vec<u8>,
 }
 
 /// This function gets the 'length' of the length field of the IPv4Option packet
